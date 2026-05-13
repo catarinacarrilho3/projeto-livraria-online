@@ -32,10 +32,10 @@ const ProductList = ({ products }) => {
               /* PERFORMANCE: apenas a primeira imagem carrega imediatamente (eager)
                  as demais carregam só quando o usuário rolar a página (lazy) */
               loading={index === 0 ? 'eager' : 'lazy'}
-              /* PERFORMANCE: dimensões explícitas evitam Cumulative Layout Shift (CLS) */
+          
               width="200"
               height="220"
-              /* PERFORMANCE: hint de decodificação assíncrona para não travar o browser */
+              /*  hint de decodificação assíncrona para não travar o browser */
               decoding="async"
             />
 

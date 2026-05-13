@@ -12,28 +12,69 @@ const ProductList = ({ products }) => {
   const isInCart = (id) => cart.some(item => item.id === id);
 
   return (
-    <div className="product-list">
+    <section className="product-list" aria-label="Catálogo de livros">
+
       <h1>Nossos Livros</h1>
-      <div className="products-grid">
-        {products.map(product => (
-          <div key={product.id} className="product-card">
-            <img 
-  src={product.image} 
-  alt={product.name} 
-  className="book-image"
-/>
-            <h3>{product.name}</h3>
-            <p className="price">R$ {product.price.toFixed(2)}</p>
+
+      <div className="products-grid" role="list">
+
+        {products.map((product, index) => (
+
+          <article
+            key={product.id}
+            className="product-card"
+            role="listitem"
+          >
+            <img
+              src={product.image}
+              alt={`Capa do livro ${product.name}`}
+              className="book-image"
+              /* PERFORMANCE: apenas a primeira imagem carrega imediatamente (eager)
+                 as demais carregam só quando o usuário rolar a página (lazy) */
+              loading={index === 0 ? 'eager' : 'lazy'}
+              /* PERFORMANCE: dimensões explícitas evitam Cumulative Layout Shift (CLS) */
+              width="200"
+              height="220"
+              /* PERFORMANCE: hint de decodificação assíncrona para não travar o browser */
+              decoding="async"
+            />
+
+            <h2 className="product-card h2">{product.name}</h2>
+
+            <p className="price">
+              <span className="sr-only">Preço:</span>
+              R$ {product.price.toFixed(2)}
+            </p>
+
             <button
               onClick={() => addToCart(product)}
+              onKeyDown={(e) => {
+                if ((e.key === 'Enter' || e.key === ' ') && !isInCart(product.id)) {
+                  e.preventDefault();
+                  addToCart(product);
+                }
+              }}
+              disabled={isInCart(product.id)}
               className={isInCart(product.id) ? 'btn-added' : 'btn-add'}
+              aria-label={
+                isInCart(product.id)
+                  ? `${product.name} já adicionado ao carrinho`
+                  : `Adicionar ${product.name} ao carrinho`
+              }
+              aria-pressed={isInCart(product.id)}
+              tabIndex="0"
             >
-              {isInCart(product.id) ? '✓ Adicionado' : 'Adicionar ao Carrinho'}
+              {isInCart(product.id)
+                ? <><span aria-hidden="true">✓</span> Adicionado</>
+                : 'Adicionar ao Carrinho'
+              }
             </button>
-          </div>
+
+          </article>
         ))}
+
       </div>
-    </div>
+    </section>
   );
 };
 

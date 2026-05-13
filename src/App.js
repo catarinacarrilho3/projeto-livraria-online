@@ -36,32 +36,31 @@ const Header = () => {
   const cart = useSelector(state => state.cart);
 
   return (
-    // MELHORIA: <header> já é semântico; adicionado aria-label para identificar a região
+    // <header> já é semântico; adicionado aria-label para identificar a região
     <header className="header" aria-label="Cabeçalho da Livraria Aurora">
 
       <div className="header-brand">
-        {/* MELHORIA: ícone decorativo oculto de leitores de tela com aria-hidden */}
+   
         <span className="header-icon" aria-hidden="true">📚</span>
         <span className="header-title">Livraria Aurora</span>
       </div>
 
-      {/* MELHORIA: aria-label descritivo na navegação principal */}
       <nav className="header-nav" aria-label="Navegação principal">
 
         <Link to="/" className="nav-link">Catálogo</Link>
 
         <Link to="/cart" className="nav-link nav-cart" aria-label={`Carrinho de compras, ${cart.length} ${cart.length === 1 ? 'item' : 'itens'}`}>
-          {/* MELHORIA: ícone decorativo oculto de leitores de tela */}
+          {/*  ícone decorativo oculto de leitores de tela */}
           <span aria-hidden="true">🛒</span> Carrinho
           {cart.length > 0 && (
-            // MELHORIA: aria-hidden no badge pois a info já está no aria-label do link acima
+            //  aria-hidden no badge pois a info já está no aria-label do link acima
             <span className="cart-badge" aria-hidden="true">{cart.length}</span>
           )}
         </Link>
 
       </nav>
 
-      {/* MELHORIA: região aria-live anuncia mudanças no carrinho para leitores de tela */}
+      {/* região aria-live anuncia mudanças no carrinho para leitores de tela */}
       <div
         aria-live="polite"
         aria-atomic="true"
@@ -79,7 +78,7 @@ const Header = () => {
 const App = () => (
   <Router>
     <Header />
-    {/* MELHORIA: <main> com aria-label identifica o conteúdo principal da página */}
+    {/*  <main> com aria-label identifica o conteúdo principal da página */}
     <main className="main" aria-label="Conteúdo principal">
       <Routes>
         <Route path="/" element={<ProductList products={products} />} />

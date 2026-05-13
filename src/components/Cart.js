@@ -13,16 +13,16 @@ const Cart = () => {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    // MELHORIA: section com aria-label identifica a região do carrinho
+    //  section com aria-label identifica a região do carrinho
     <section className="cart-page" aria-label="Carrinho de compras">
 
-      {/* MELHORIA: h1 como título principal da página do carrinho */}
+      {/*  h1 como título principal da página do carrinho */}
       <h1>
-        {/* MELHORIA: ícone decorativo oculto de leitores de tela */}
+        {/*  ícone decorativo oculto de leitores de tela */}
         <span aria-hidden="true">🛒</span> Seu Carrinho
       </h1>
 
-      {/* MELHORIA: aria-live anuncia dinamicamente mudanças no conteúdo do carrinho */}
+      {/*  aria-live anuncia dinamicamente mudanças no conteúdo do carrinho */}
       <div
         aria-live="polite"
         aria-atomic="true"
@@ -36,7 +36,7 @@ const Cart = () => {
       {cart.length === 0 ? (
 
         <div className="empty-cart" role="status">
-          {/* MELHORIA: ícone decorativo oculto de leitores de tela */}
+          {/* ícone decorativo oculto de leitores de tela */}
           <p className="empty-icon" aria-hidden="true">🛍️</p>
           <p>Seu carrinho está vazio.</p>
           <Link to="/" className="btn-continue">Ver Produtos</Link>
@@ -44,20 +44,20 @@ const Cart = () => {
 
       ) : (
         <>
-          {/* MELHORIA: ul/li com semântica correta de lista para os itens do carrinho */}
+          {/*  ul/li com semântica correta de lista para os itens do carrinho */}
           <ul className="cart-items" aria-label="Itens no carrinho">
 
             {cart.map(item => (
               <li key={item.id} className="cart-item">
 
-                {/* MELHORIA: ícone decorativo oculto de leitores de tela */}
+                {/*  ícone decorativo oculto de leitores de tela */}
                 <span className="cart-item-icon" aria-hidden="true">📖</span>
 
                 <div className="cart-item-info">
-                  {/* MELHORIA: h2 para o nome de cada item, hierarquia h1 → h2 */}
+                  {/* h2 para o nome de cada item, hierarquia h1 → h2 */}
                   <h2 className="cart-item-name">{item.name}</h2>
                   <span className="cart-item-price">
-                    {/* MELHORIA: label oculto para o preço */}
+                    {/*  label oculto para o preço */}
                     <span className="sr-only">Preço:</span>
                     R$ {item.price.toFixed(2)}
                   </span>
@@ -66,16 +66,16 @@ const Cart = () => {
                 <button
                   className="btn-remove"
                   onClick={() => removeFromCart(item)}
-                  // MELHORIA: onKeyDown garante acionamento explícito via teclado (Enter e Space)
+                  //  onKeyDown garante acionamento explícito via teclado (Enter e Space)
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       removeFromCart(item);
                     }
                   }}
-                  // MELHORIA: aria-label contextual com o nome do livro
+                  //  aria-label contextual com o nome do livro
                   aria-label={`Remover ${item.name} do carrinho`}
-                  // MELHORIA: tabIndex garante foco via teclado
+                  //  tabIndex garante foco via teclado
                   tabIndex="0"
                 >
                   Remover
@@ -86,14 +86,14 @@ const Cart = () => {
 
           </ul>
 
-          {/* MELHORIA: aside com role="complementary" para o resumo da compra */}
+          {/*  aside com role="complementary" para o resumo da compra */}
           <aside className="cart-summary" aria-label="Resumo da compra">
 
             <div className="summary-row">
               <span>
                 {cart.length} {cart.length === 1 ? 'item' : 'itens'}
               </span>
-              {/* MELHORIA: aria-label no total para leitura mais clara */}
+              {/*  aria-label no total para leitura mais clara */}
               <span
                 className="total-value"
                 aria-label={`Total: R$ ${total.toFixed(2)}`}
@@ -104,9 +104,9 @@ const Cart = () => {
 
             <button
               className="btn-checkout"
-              // MELHORIA: aria-label descritivo no botão de finalizar compra
+              //  aria-label descritivo no botão de finalizar compra
               aria-label="Finalizar compra"
-              // MELHORIA: onKeyDown garante acionamento explícito via teclado (Enter e Space)
+              //  onKeyDown garante acionamento explícito via teclado (Enter e Space)
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
@@ -118,7 +118,7 @@ const Cart = () => {
             </button>
 
             <Link to="/" className="btn-continue">
-              {/* MELHORIA: ícone decorativo oculto de leitores de tela */}
+              {/* ícone decorativo oculto de leitores de tela */}
               <span aria-hidden="true">←</span> Continuar Comprando
             </Link>
 

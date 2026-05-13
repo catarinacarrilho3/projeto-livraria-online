@@ -27,7 +27,6 @@ body {
 }
 
 /* ===== Header ===== */
-/* #1a5276 com texto branco = 7.2:1 — aprovado WCAG AAA */
 .header {
   background: #1a5276;
   padding: 1rem 2rem;
@@ -117,15 +116,12 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.09);
 }
 
-/* #2c3e50 sobre branco = 10.7:1 — aprovado */
 .product-name {
   font-size: 1rem;
   color: #2c3e50;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
-
-/* #145a32 sobre branco = 7.5:1 — aprovado WCAG AAA */
 .price {
   font-size: 1.2rem;
   color: #145a32;
@@ -149,7 +145,6 @@ body {
 
 .btn-add:hover { background: #3d5166; }
 
-/* #145a32 sobre branco = 7.5:1 — aprovado */
 .btn-added {
   width: 100%;
   padding: 0.7rem;
@@ -162,7 +157,6 @@ body {
   min-height: 44px;
 }
 
-/* ===== Cart ===== */
 .cart-page h1 {
   font-size: 1.6rem;
   color: #2c3e50;
@@ -179,7 +173,6 @@ body {
 
 .empty-icon { font-size: 3.5rem; margin-bottom: 0.8rem; }
 
-/* #555 sobre branco = 7.4:1 — aprovado (era #888 = 3.5:1, reprovava) */
 .empty-cart p {
   color: #555555;
   margin-bottom: 1.2rem;
@@ -218,14 +211,12 @@ body {
   font-weight: 600;
 }
 
-/* #145a32 sobre branco = 7.5:1 — aprovado */
 .cart-item-price {
   font-size: 1rem;
   color: #145a32;
   font-weight: 600;
 }
 
-/* #922b21 sobre branco = 5.9:1 — aprovado (era #e74c3c = 3.5:1, reprovava) */
 .btn-remove {
   background: white;
   border: 1.5px solid #922b21;
@@ -263,8 +254,6 @@ body {
   color: #555555;
 }
 
-/* #1a5276 sobre branco = 7.2:1 — aprovado */
-.total-value {
   font-size: 1.4rem;
   font-weight: 700;
   color: #1a5276;
@@ -286,7 +275,6 @@ body {
 
 .btn-checkout:hover { background: #0e3d22; }
 
-/* #555 sobre branco = 7.4:1 — aprovado */
 .btn-continue {
   display: block;
   text-align: center;
